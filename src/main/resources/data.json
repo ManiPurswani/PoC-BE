@@ -1,0 +1,163 @@
+{
+  "form": {
+    "form_type": "Credit Card Form",
+    "bank_name": "HDFC",
+    "tabs": [
+      {
+        "id": 1,
+        "name": "Personal Details",
+        "order": 1
+      },
+      {
+        "id": 2,
+        "name": "Create Password",
+        "order": 2
+      },
+      {
+        "id": 3,
+        "name": "Tab 3",
+        "order": 3
+      }
+    ],
+    "fields": [
+      {
+        "id": 1,
+        "tab": 1,
+        "order": 1,
+        "field_label": "first_name",
+        "description": "[Validation: Only alphabets]",
+        "showFieldName": true,
+        "showField": true,
+        "showDescription": true,
+        "input_type": "text",
+        "value_type": "text",
+        "required": true,
+        "validation": [
+          {
+            "key": "regex_check",
+            "type": "equal",
+            "value": "^[a-zA-Z]+$",
+            "error_message": "First name can only have characters."
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "tab": 1,
+        "order": 2,
+        "field_label": "last_name",
+        "description": "[Validation: Only alphabets]",
+        "showField": true,
+        "showFieldName": true,
+        "showDescription": true,
+        "input_type": "text",
+        "value_type": "text",
+        "required": true,
+        "validation": [
+          {
+            "key": "regex_check",
+            "type": "equal",
+            "value": "^[a-zA-Z]+$",
+            "error_message": "Last name can only have characters."
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "tab": 1,
+        "order": 2,
+        "field_label": "age",
+        "description": "[18 - 70 years]",
+        "showField": true,
+        "showFieldName": true,
+        "showDescription": true,
+        "input_type": "text",
+        "value_type": "num",
+        "required": true,
+        "validation": [
+          {
+            "key": "regex_check",
+            "type": "equal",
+            "value": "^[0-9]+$",
+            "error_message": "Age can only be an integer."
+          },
+          {
+            "logic": "and",
+            "key": "value_check",
+            "type": "greater",
+            "value": "18",
+            "error_message": "Age has to be greater than 18."
+          }
+        ]
+      }, {
+        "id": 7,
+        "tab": 1,
+        "order": 6,
+        "field_label": "education",
+        "description": "Select your education level",
+        "showField": true,
+        "showFieldName": false,
+        "showDescription": true,
+        "input_type": "select",
+        "required": true,
+        "options": ["10th pass", "12th pass", "Graduate", "Post-graduate"],
+        "validation": []
+    },
+    {
+        "id": 8,
+        "tab": 1,
+        "order": 7,
+        "field_label": "Board",
+        "description": "Select your education level",
+        "showField": true,
+        "showFieldName": true,
+        "showDescription": false,
+        "input_type": "select",
+        "required": true,
+        "options": ["CBSE", "ICSE", "Maharashtra"],
+        "validation": [],
+        "preRequisites": [
+            {
+                "field_label": "education",
+                "value": "10th pass",
+                "error_message": "Please select correct eductaion."
+            },
+            {
+                "field_label": "education",
+                "value": "12th pass",
+                "error_message": "Please select correct eductaion.",
+                "logic": "or"
+            }
+
+        ]
+    },
+    {
+        "id": 8,
+        "tab": 1,
+        "order": 7,
+        "field_label": "Specialization",
+        "description": "",
+        "showField": true,
+        "showFieldName": true,
+        "showDescription": false,
+        "input_type": "select",
+        "required": true,
+        "options": ["IT", "Mechanical", "Electronics"],
+        "validation": [],
+        "preRequisites": [
+            {
+                "field_label": "education",
+                "value": "Graduate",
+                "error_message": "Please select correct eductaion."
+            },
+            {
+                "field_label": "education",
+                "value": "Post-graduate",
+                "error_message": "Please select correct eductaion.",
+                "logic": "or"
+            }
+        ]
+    }
+    ]
+  }
+}
